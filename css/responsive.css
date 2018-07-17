@@ -42,11 +42,10 @@
 		max-width: 100%;
 	}
 	.slider_two_area #main_slider_two .tp-leftarrow.tparrows {
-		left: -150px !important;
+		display:none !important;
 	}
 	.slider_two_area #main_slider_two .tp-rightarrow.tparrows {
-		right: -200px !important;
-		left: auto !important;
+		display:none !important;
 	}
 }
 @media (max-width: 1380px){
@@ -1363,9 +1362,9 @@
 		padding-left: 0px;
 		padding-right: 0px;
 	}
-	.app_feature_inner .col-md-4{
+	/*.app_feature_inner .col-md-4{
 		display: none;
-	}
+	} */
 	.app_feature_area_two {
 		padding: 100px 0px 100px;
 	}

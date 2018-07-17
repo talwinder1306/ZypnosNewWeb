@@ -3,7 +3,7 @@
     
     
 	$(window).on('load', function() {
-		$('header .nav.navbar-nav li a, .offcanvas_text ul li a[href^="#"]:not([href="#"])').on('click', function(event) {
+		$('header .nav.navbar-nav li a, .navigate, .offcanvas_text ul li a[href^="#"]:not([href="#"])').on('click', function(event) {
 			var $anchor = $(this);
 			$('html, body').stop().animate({
 				scrollTop: $($anchor.attr('href')).offset().top - 85
@@ -422,24 +422,24 @@
     function testimonial_slid(){
         if ( $('.testimonial-carousel').length ){
             $('.testimonial-carousel').owlCarousel({
-                loop:true,
+                loop:false,
                 margin: 50,
-                items: 3,
+                items: 1,
                 nav:false,
                 autoplay: false,
                 smartSpeed: 1500,
                 dots: true, 
                 responsiveClass: true,
                 responsive: {
-                    0: {
+                    767: {
                         items: 1,
-                    },
+                    }/*,
                     767: {
                         items: 2,
                     },
                     1024: {
                         items: 3,
-                    }
+                    } */
                 }
             })
         }

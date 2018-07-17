@@ -222,7 +222,7 @@ iframe {
 .main_title2 h2 {
   font-size: 30px;
   color: #121921;
-  font-family: "Heebo", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
   position: relative;
   padding-bottom: 30px;
@@ -235,7 +235,7 @@ iframe {
   font-size: 14px;
   line-height: 26px;
   color: #6b6d6f;
-  font-family: "Heebo", sans-serif;
+  font-family: "Poppins", sans-serif;
   letter-spacing: .28px;
 }
 
@@ -2148,33 +2148,25 @@ iframe {
 }
 
 .slider_two_area #main_slider_two .tp-leftarrow.tparrows {
-  background: transparent !important;
-  height: auto !important;
-  width: auto !important;
+  display:none !important;
 }
 
 .slider_two_area #main_slider_two .tp-leftarrow.tparrows:before {
-  content: "\eb8a";
-  font-family: "IcoFont" !important;
-  font-size: 50px !important;
+  display:none !important;
 }
 
 .slider_two_area #main_slider_two .tp-rightarrow.tparrows {
-  background: transparent !important;
-  height: auto !important;
-  width: auto !important;
+  display:none !important;
 }
 
 .slider_two_area #main_slider_two .tp-rightarrow.tparrows:before {
-  content: "\eb8b";
-  font-family: "IcoFont" !important;
-  font-size: 50px !important;
-}
+  display:none !important;
+} 
 
 .slider_two_area #main_slider_ten {
   background: url(../img/home-slider/slider-bg-10.png) no-repeat scroll center center;
   background-size: cover;
-}
+} 
 
 /* End Main slider Area css
 ============================================================================================ */
@@ -3913,6 +3905,7 @@ iframe {
 .app_feature_area_two .app_feature_inner .app_feature_item {
   padding-right: 100px;
   margin-top: 30px;
+  min-height:240px;
 }
 
 .app_feature_area_two .app_feature_inner .app_feature_item:hover h4 {
@@ -6042,7 +6035,7 @@ iframe {
   font-size: 18px;
   font-weight: normal;
   letter-spacing: .36px;
-  color: #6b6d6f;
+  color: #f9faff;
 }
 
 .subcribe_area_two .subscrib_inner .input-group input:-moz-placeholder {
@@ -6050,7 +6043,7 @@ iframe {
   font-size: 18px;
   font-weight: normal;
   letter-spacing: .36px;
-  color: #6b6d6f;
+  color: #f9faff;
 }
 
 .subcribe_area_two .subscrib_inner .input-group input::-moz-placeholder {
@@ -6058,7 +6051,7 @@ iframe {
   font-size: 18px;
   font-weight: normal;
   letter-spacing: .36px;
-  color: #6b6d6f;
+  color: #f9faff;
 }
 
 .subcribe_area_two .subscrib_inner .input-group input::-webkit-input-placeholder {
@@ -6066,7 +6059,7 @@ iframe {
   font-size: 18px;
   font-weight: normal;
   letter-spacing: .36px;
-  color: #6b6d6f;
+  color: #f9faff;
 }
 
 .subcribe_area_two .subscrib_inner .input-group .input-group-btn {
@@ -8993,7 +8986,6 @@ iframe {
 
 .contact_seven_area {
   padding-top: 100px;
-  background: #3498db;
 }
 
 .contact_seven_area.violet .contact_seven_box .contact_us_form .form-group .theme_btn {
@@ -11853,6 +11845,8 @@ iframe {
   -webkit-box-shadow: 0px 4px 27.55px 1.45px rgba(0, 0, 0, 0.09);
   box-shadow: 0px 4px 27.55px 1.45px rgba(0, 0, 0, 0.09);
   padding: 0px 50px;
+  width: 90%;
+  margin: 0px auto;
 }
 
 .testimonial-carousel .slider-item i {
