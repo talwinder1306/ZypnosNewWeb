@@ -366,6 +366,10 @@ iframe {
   color: #fff;
 }
 
+.color_white h3 {
+  color: #fff;
+}
+
 .color_white h2:before {
   background: #fff;
 }
@@ -13800,6 +13804,17 @@ iframe {
   font-family: "Heebo", sans-serif;
 }
 
+.modal-body .form-group .input-group {
+  width: 100%;
+}
+
+.modal-footer .btn-primary {
+  background: #3498db;
+  border-radius: 30px;
+  padding: 10px 20px;
+  width: 180px;
+}
+}
 /* End Ten Footer Area css
 ============================================================================================ */
 /*---------------------------------------------------- */

@@ -114,7 +114,7 @@
 							<li><a href="#product">Product</a></li>
                             <li><a href="#feature">Features</a></li>
                             <li><a href="#contact">Request a demo</a></li>
-							<li><a class="border-menu-item" href="#">Login</a></li>
+							<li><a class="border-menu-item" data-toggle="modal" data-target="#modalLoginForm">Login</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                     </nav>
@@ -122,7 +122,8 @@
             </div>
         </header>
         <!--================End Header Area =================-->
-
+		
+		
         <!--================End Header Area =================-->
         <section class="slider_two_area" id="home2">
             <div id="main_slider_two" class="rev_slider" data-version="5.3.1.6">
@@ -136,7 +137,7 @@
                             data-y="['middle','middle','middle','middle']"
                             data-hoffset="['110','0','0','0']"
                             data-voffset="['-100','-120','-120','-120','-130']"
-                            data-fontsize="['42','42','32','24','17']"
+                            data-fontsize="['42','42','32','24','15']"
                             data-lineheight="['50','50','50','36','24']"
                             data-width="['none','none','none','none']"
                             data-height="none"
@@ -153,7 +154,7 @@
                             data-y="['middle','middle','middle','middle']"
                             data-hoffset="['210','105','0','0']"
                             data-voffset="['-40','-60','-60','-60','-85']"
-                            data-fontsize="['36','36','26','18','16']"
+                            data-fontsize="['36','36','26','18','14']"
                             data-lineheight="['42','42','38','36','24']"
                             data-width="none"
                             data-height="none"
@@ -282,37 +283,38 @@
                             <div class="col-md-6">
                                 <div class="app_feature_item">
                                     <div class="icon-round">
-                                        <i class="fa fa-diamond" aria-hidden="true"></i>
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        <!--<i class="fa fa-diamond" aria-hidden="true"></i> -->
                                     </div>
-                                    <a href="#"><h4>Save time</h4></a>
-                                    <p>Reduce regression testing time from weeks to minutes. Our Tool makes manual testing more efficient and fast. </p>
+                                    <h4>Save time</h4>
+                                    <p>Reduce regression testing time from weeks to minutes. Our tool makes manual testing more efficient and fast. </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="app_feature_item">
                                     <div class="icon-round">
-                                        <i class="fa fa-desktop" aria-hidden="true"></i>
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                                     </div>
-                                    <a href="#"><h4>Easy to use</h4></a>
+                                    <h4>Easy to use</h4>
                                     <p>Test automation for all, from novice to experts. Easy to record and easier to run in codeless test editor. </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="app_feature_item">
                                     <div class="icon-round">
-                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                        <i class="icofont icofont-chart-bar-graph" aria-hidden="true"></i>
                                     </div>
-                                    <a href="#"><h4>Real time Insights</h4></a>
+                                    <h4>Real time Insights</h4>
                                     <p>Get instant insight into your testing progress. Helps you determine the risk to release your chatbot. </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="app_feature_item">
                                     <div class="icon-round">
-                                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        <i class="fa fa-recycle" aria-hidden="true"></i>
                                     </div>
-                                    <a href="#"><h4>Reusable</h4></a>
-                                    <p>Record once run for every version. Efficiently manage test cases and runs. Helps maximize reuse and maintainability. </p>
+                                    <h4>Reusable</h4>
+                                    <p>Record once run for every version. Efficiently manage test cases and test runs. Helps maximize reuse and maintainability. </p>
                                 </div>
                             </div>
 
@@ -422,7 +424,40 @@
           </div>
         </section>
         <!--====================End Seve Contact area ====================-->
-
+		<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+							<div class="left_title">
+                            <h3>LOGIN</h3>
+							</div>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <input type="email" class="form-control" id="email" placeholder="Email">
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <input type="password" class="form-control" id="pws" placeholder="Password">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Log in</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!--===============footer Area =================-->
 		
         <footer class="footer_area_two">
