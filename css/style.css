@@ -590,6 +590,11 @@ iframe {
   z-index: 3;
 }
 
+.main_menu_area .navbar.navbar-default .nav.navbar-nav.navbar-right li .border-menu-item{
+  border: 2px solid #3498db; 
+  border-radius: 20px;
+}
+
 .main_menu_area .navbar.navbar-default .nav.navbar-nav.navbar-right li a:before {
   content: "";
   background: #d6c3fc;
@@ -2608,7 +2613,7 @@ iframe {
 /* start slider_two css
 ==============================================================================================*/
 .slider_two_area #main_slider_two {
-  background: url("../img/home-slider/home-two-bg.jpg") no-repeat scroll center 0;
+  background: url("../img/home-slider/home-two-bg-1.jpg") no-repeat scroll center 0;
   background-size: cover;
 }
 
@@ -6010,7 +6015,7 @@ iframe {
 
 .subcribe_area_two .subscrib_inner .input-group {
   max-width: 615px;
-  margin: 75px auto auto;
+  margin: 30px auto auto;
   display: block;
   position: relative;
   width: 100%;
@@ -6028,6 +6033,7 @@ iframe {
   background: transparent;
   width: 100%;
   display: block;
+  margin: 10px;
 }
 
 .subcribe_area_two .subscrib_inner .input-group input.placeholder {
@@ -6070,6 +6076,18 @@ iframe {
   width: 180px;
   border-radius: 31px;
   top: 0px;
+  -webkit-box-shadow: 0px 4px 12.35px 0.65px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 4px 12.35px 0.65px rgba(0, 0, 0, 0.12);
+}
+
+.subcribe_area_two .subscrib_inner .input-group .btn-subscribe {
+  width: 180px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: .48px;
+  font-size: 18px;
+  border-radius: 31px;
+  padding: 10px 20px;
+  margin-top: 15px;
   -webkit-box-shadow: 0px 4px 12.35px 0.65px rgba(0, 0, 0, 0.12);
   box-shadow: 0px 4px 12.35px 0.65px rgba(0, 0, 0, 0.12);
 }
@@ -9006,6 +9024,11 @@ iframe {
 
 .contact_seven_area.violet .contact_details_seven ul li a {
   color: #3498db;
+}
+
+.contact_seven_area.violet .contact_details_seven h3 {
+  color: #fff;
+  padding-bottom: 20px;
 }
 
 .contact_seven_box {
