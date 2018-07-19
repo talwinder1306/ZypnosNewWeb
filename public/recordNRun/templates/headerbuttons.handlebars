@@ -1,0 +1,40 @@
+<div class="botimage">
+    <img src="./images/bot.png" alt="" />
+</div>
+<p class="botName">{{botName}}</p>
+<div class="custom-buttons">
+    {{#ifCond mode "BOT"}}
+    <button class="btn add" onclick="onAddTestCaseSelect()">
+        <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+        Add
+    </button>
+    <button class="btn deleteAll" onclick="onDeleteBotSelect()">
+        <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+        Delete
+    </button>
+    <button class="btn runAll" onclick="onRunAllCases()">
+        <i class="fa fa-play fa-fw" aria-hidden="true"></i>
+        Run All Cases
+    </button>
+    {{/ifCond}}
+    {{#ifCond mode "TESTCASE"}}
+    <button class="btn run" onclick="reRunTestCase()">
+        <i class="fa fa-play fa-fw" aria-hidden="true"></i>
+        Run
+    </button>
+    <button class="btn delete" onclick="onDeleteTestCaseSelect()">
+        <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+        Delete
+    </button>
+    {{/ifCond}}
+    {{#ifCond mode "SAVE"}}
+    <button class="btn save" data-toggle="modal" data-target="#saveTcModal">
+        <i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>
+        Save
+    </button>
+    <button class="btn" onclick="onResetTestCaseSelect()">
+        <i class="fa fa-undo fa-fw reset" aria-hidden="true"></i>
+        Reset
+    </button>
+    {{/ifCond}}
+</div>
