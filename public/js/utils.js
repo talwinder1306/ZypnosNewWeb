@@ -22,33 +22,40 @@
     $('#loginBtn').click(function (e) {
         var email = $('#loginEmail').val();
         var pass = $('#loginPwd').val();
-        login(email, pass);
+		
+		if(validateLogin(email,pass) == true) {
+			login(email, pass);
+		}
     });
 
     $('#signupBtn').click(function (e) {
         var name = $('#signupName').val();
         var email = $('#signupEmail').val();
         var password = "Zypnos123" + Math.floor(Math.random() * (1000000 - 99999) + 99999);
-
-        var oUserDetails = {
-            userName: name,
-            emailId: email,
-            userPassword: password
-        };
-        signUp(oUserDetails);
+		
+		if(validateSignUp(name, email) == true) {
+			var oUserDetails = {
+				userName: name,
+				emailId: email,
+				userPassword: password
+			};
+			signUp(oUserDetails);
+		}
     });
 
     $('#feedbackBtn').click(function (e) {
         var name = $('#feedbackName').val();
         var email = $('#feedbackEmail').val();
         var message = $('#feedbackMessage').val();
-        var oFeedbackPayload = {
-            name: name,
-            email: email,
-            message: message,
-            time: getTimeStamp()
-        }
-        sendFeedback(oFeedbackPayload);
+		if(validateFeedback(name, email, message) == true) {
+			var oFeedbackPayload = {
+				name: name,
+				email: email,
+				message: message,
+				time: getTimeStamp()
+			}
+			sendFeedback(oFeedbackPayload);
+		}
     });
 
     clearUser = function () {
@@ -62,7 +69,7 @@
     }
 
     navToRnR = function(){
-        window.location.href = "/recordNRun/index.html";
+        window.location.href = "recordNRun/index.html";
     }
 
     clearLoginDialog = function(){
@@ -89,6 +96,7 @@
         };
         fErrorHandler = function (erro) {
             clearUser();
+			$('#loginError').append("Email/Password is incorrect");
         };
         firebase.auth().signInWithEmailAndPassword(email, pass)
             .then(function (authData) {
@@ -97,6 +105,7 @@
                 }
                 else {
                     clearUser();
+					$('#loginError').append("Email/Password is incorrect");
                 }
             }, fErrorHandler).catch(fErrorHandler);
     }
@@ -121,10 +130,10 @@
     sendFeedback = function (oFeedbackPayload) {
         fSuccessHandler = function (oData) {
             clearFeedbackForm();
-            openMessageModel("Thanks for submitting your feedback");
+            openMessageModel("Thank you for contacting us, we will get back to you soon!");
         };
         fErrorHandler = function (oData) {
-            openMessageModel("Unable to send feedback");
+            openMessageModel("Unable to send message");
         };
         firebase.database().ref('feedback').push(oFeedbackPayload)
             .then(fSuccessHandler, fErrorHandler).catch(fErrorHandler);
@@ -146,4 +155,91 @@
         $('#messageModalText').text(textMessage);
         $('#messageModal').modal();
     }
+	
+	validateLogin = function (email, pass) {
+		$('#loginError').html("");
+		$('#loginEmail,#loginPwd').removeClass('errorLoginTextbox');
+		var validLogin = true;
+		if( email =='' || pass ==''){
+			$('#loginEmail,#loginPwd').addClass('errorLoginTextbox');
+			$('#loginError').append("Please enter email and password");
+			validLogin = false;
+		} else {
+			if(validateEmail(email) == false) {
+				$('#loginEmail').addClass('errorLoginTextbox');
+				$('#loginError').append("Please enter a valid email id<br/>");	
+				validLogin = false;
+			}
+			
+			if(pass.length < 6) {
+				$('#loginPwd').addClass('errorLoginTextbox');
+				$('#loginError').append("Password must be atleast 6 characters");
+				validLogin = false;
+			}
+			
+		}
+		return validLogin;
+    }
+	
+	validateEmail = function (email) {
+		var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		if(reg.test(email) == true) {
+			return true;
+		}
+		return false;
+	}
+	
+	validateSignUp = function (name, email) {
+		$('#signupError').html("");
+		var validSignUp = true;
+		if( name =='' || email ==''){
+			$('#signupError').append("<p>Please enter name and email</p>");
+			validSignUp = false;
+		} else {
+			if(validateEmail(email) == false) {
+				$('#signupError').append("<p>Please enter a valid email id</p>");	
+				validSignUp = false;
+			}
+			/*
+			var reg = /^[a-zA-Z]+$/;
+			
+			if(name.length < 3 || reg.test(name) == false) {
+				$('#signupName').addClass('errorLoginTextbox');
+				$('#signupError').append("Please enter a valid name");
+				validLogin = false;
+			}
+			*/
+		}
+		return validSignUp;
+	}
+	
+	validateFeedback = function (name, email, message) {
+		$('#feedbackError').html("");
+		$('#feedbackName,#feedbackEmail, #feedbackMessage').removeClass('errorFeedbackTextbox');
+		var validFeedback = true;
+		if( name =='' || email =='' || message == ''){
+			if(name == ''){ $('#feedbackName').addClass('errorFeedbackTextbox'); }
+			if(email == ''){ $('#feedbackEmail').addClass('errorFeedbackTextbox'); }
+			if(message == ''){ $('#feedbackMessage').addClass('errorFeedbackTextbox'); }
+			$('#feedbackError').append("Please enter all fields.");
+			validFeedback = false;
+		} else {
+			if(validateEmail(email) == false) {
+				$('#feedbackEmail').addClass('errorFeedbackTextbox');
+				$('#feedbackError').append("Please enter a valid email id");	
+				validFeedback = false;
+			}
+			/*
+			var reg = /^[a-zA-Z]+$/;
+			
+			if(name.length < 3 || reg.test(name) == false) {
+				$('#feedbackName').addClass('errorFeedbackTextbox');
+				$('#feedbackError').append("Please enter a valid name");
+				validLogin = false;
+			}
+			*/
+		}
+		return validFeedback;
+	}
+	
 })();

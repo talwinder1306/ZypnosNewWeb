@@ -6008,7 +6008,7 @@ iframe {
 }
 
 .download_area .main_title {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 /*============== download_area css ============*/
@@ -6128,7 +6128,7 @@ iframe {
 }
 
 .download_area .main_title {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 /*============== download_area css ============*/
@@ -13814,6 +13814,83 @@ iframe {
   padding: 10px 20px;
   width: 180px;
 }
+.errorLoginTextbox {
+  border: 2px solid #ff6767;
+  box-shadow: 0 0 3px #ff6767;
+}
+
+.contact_seven_box .contact_us_form .form-group .errorFeedbackTextbox {
+  border-bottom: 2px solid #ff6767;
+}
+
+.contact_seven_box .contact_us_form .form-group input.placeholder {
+  font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+
+.contact_seven_box .contact_us_form .form-group input:-moz-placeholder {
+  font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+
+.contact_seven_box .contact_us_form .form-group input::-moz-placeholder {
+  font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+
+.contact_seven_box .contact_us_form .form-group input::-webkit-input-placeholder {
+  font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+.contact_seven_box .contact_us_form .form-group textarea.placeholder {
+   font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+
+.contact_seven_box .contact_us_form .form-group textarea:-moz-placeholder {
+  font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+
+.contact_seven_box .contact_us_form .form-group textarea::-moz-placeholder {
+  font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+
+.contact_seven_box .contact_us_form .form-group textarea::-webkit-input-placeholder {
+  font-family: "Poppins", sans-serif, FontAwesome;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: .36px;
+}
+
+.error {
+  color: #ff6767;
+}
+
+.subcribe_area_two .subscrib_inner .input-group .sign-up-input {
+	border: 2px solid #fff; 
+	color:#fff;
+}
+
+.subcribe_area_two .subscrib_inner .input-group .sign-up-btn {
+  border: 2px solid #fff; 
+  color:#3498db; 
+  background:#fff;
 }
 /* End Ten Footer Area css
 ============================================================================================ */
