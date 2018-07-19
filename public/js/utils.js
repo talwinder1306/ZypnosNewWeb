@@ -13,9 +13,9 @@
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            loginSuccess();
+            setUser();
         } else {
-            loggedFail();
+            clearUser();
         }
     });
 
@@ -51,53 +51,83 @@
         sendFeedback(oFeedbackPayload);
     });
 
-    loggedFail = function () {
+    clearUser = function () {
         isUserLogged = false;
         uid = '';
     }
 
-    loginSuccess = function (user) {
+    setUser = function (user) {
         isUserLogged = true;
         uid = user.uid;
     }
 
+    navToRnR = function(){
+        window.location.href = "/recordNRun/index.html";
+    }
+
+    clearLoginDialog = function(){
+        $('#loginEmail').val('');
+        $('#loginPwd').val('');
+    }
+
+    clearFeedbackForm = function(){
+        $('#feedbackName').val('');
+        $('#feedbackEmail').val('');
+        $('#feedbackMessage').val('');
+    }
+
+    clearSignUpForm = function(){
+        $('#signupName').val('');
+        $('#signupEmail').val('');
+    }
+
     login = function (email, pass) {
+        fSuccessHandler = function (oData) {
+            setUser(firebase.auth().currentUser);
+            clearLoginDialog();
+            navToRnR();
+        };
+        fErrorHandler = function (erro) {
+            clearUser();
+        };
         firebase.auth().signInWithEmailAndPassword(email, pass)
             .then(function (authData) {
                 if (firebase.auth() && firebase.auth().currentUser) {
-                    loginSuccess(firebase.auth().currentUser);
+                    fSuccessHandler();
                 }
                 else {
-                    loggedFail();
+                    clearUser();
                 }
-            })
-            .catch(function (error) {
-                loggedFail();
-            });
+            }, fErrorHandler).catch(fErrorHandler);
     }
 
     signUp = function (oUserDetails) {
+        fSuccessHandler = function (oData) {
+            clearSignUpForm();
+            openMessageModel("Thanks for registering will get back to you soon");
+        };
+        fErrorHandler = function (erro) {
+            openMessageModel("Unable to signup");
+        };
+
         firebase.auth().createUserWithEmailAndPassword(oUserDetails.emailId, oUserDetails.userPassword)
             .then(function (user) {
-                firebase.database().ref(user.uid).child('user')
-                    .set(oUserDetails)
-                    .then(function () {
-
-                    });
-            })
-            .catch(function (error) {
-
-            });
+                firebase.database().ref(user.uid).child('user').set(oUserDetails)
+                    .then(fSuccessHandler);
+            }, fErrorHandler).catch(fErrorHandler);
 
     };
 
     sendFeedback = function (oFeedbackPayload) {
         fSuccessHandler = function (oData) {
+            clearFeedbackForm();
+            openMessageModel("Thanks for submitting your feedback");
         };
         fErrorHandler = function (oData) {
+            openMessageModel("Unable to send feedback");
         };
         firebase.database().ref('feedback').push(oFeedbackPayload)
-            .then(fSuccessHandler,fErrorHandler);
+            .then(fSuccessHandler, fErrorHandler).catch(fErrorHandler);
     };
 
     getTimeStamp = function () {
@@ -111,4 +141,9 @@
         var miliSecond = time.getMilliseconds();
         return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second + ":" + miliSecond;
     };
+
+    openMessageModel = function (textMessage) {
+        $('#messageModalText').text(textMessage);
+        $('#messageModal').modal();
+    }
 })();
