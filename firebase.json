@@ -5,6 +5,47 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/saveTestCase",
+        "function": "app"
+      },
+      {
+        "source": "/getTestCase",
+        "function": "app"
+      },
+      {
+        "source": "/saveBot",
+        "function": "app"
+      },
+      {
+        "source": "/getBots",
+        "function": "app"
+      },
+      {
+        "source": "/sendMessage",
+        "function": "app"
+      },
+      {
+        "source": "/deleteTestCase",
+        "function": "app"
+      },
+      {
+        "source": "/deleteBot",
+        "function": "app"
+      }
+    ],
+    "headers": [
+      {
+        "source": "index.html",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
     ]
   }
 }
