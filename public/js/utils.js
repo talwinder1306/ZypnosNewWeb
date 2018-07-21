@@ -61,11 +61,19 @@
     clearUser = function () {
         isUserLogged = false;
         uid = '';
+		$('#login').removeClass('hide');
+		$('#logout').addClass('hide');
+		$('#goToSubscribe, #goToArrow').removeClass('hide');
+		$('#goToTool').addClass('hide');
     }
 
     setUser = function (user) {
         isUserLogged = true;
         uid = user.uid;
+		$('#login').addClass('hide');
+		$('#logout').removeClass('hide');
+		$('#goToSubscribe, #goToArrow').addClass('hide');
+		$('#goToTool').removeClass('hide');
     }
 
     navToRnR = function () {

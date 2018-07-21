@@ -133,7 +133,8 @@
                                 <a href="#contact">Request a demo</a>
                             </li>
                             <li>
-                                <a class="border-menu-item" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+                                <a id="login" class="border-menu-item" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+								<a id="logout" class="border-menu-item hide">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -188,8 +189,11 @@
                             data-whitespace="normal" data-type="text" data-actions='[{"event":"mouseenter","action":"startlayer","layer":"slide-2971-layer-18","delay":""},{"event":"mouseleave","action":"stoplayer","layer":"slide-2971-layer-18","delay":""},{"event":"click","action":"startlayer","layer":"slide-2971-layer-15","delay":""},{"event":"click","action":"startlayer","layer":"slide-2971-layer-19","delay":""},{"event":"click","action":"startlayer","layer":"slide-2971-layer-20","delay":"1000"},{"event":"click","action":"playvideo","layer":"slide-2971-layer-15","delay":"1000"}]'
                             data-responsive_offset="on" data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1750,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
                             data-textAlign="['center','center','center','center','center','center']">
-                            <a class="navigate" href="#subscribe_section">
-                                <span style="padding-left: 10px;color: #fff;font-size: 24px;font-family: 'Montserrat', sans-serif;font-weight: bold;text-transform: uppercase;">SIGN UP FOR BETA</span>
+                            <a id="goToSubscribe" class="navigate" href="#subscribe_section">
+                                <span class="caption-text">Sign up for Beta</span>
+                            </a>
+							<a id="goToTool" class="navigate hide" href="navToRnR()">
+                                <span class="caption-text">START TESTING</span>
                             </a>
                         </div>
                         <div class="tp-caption tp-resizeme rev-btn watch_text" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']"
@@ -197,8 +201,8 @@
                             data-lineheight="['64','64','64','50','35']" data-width="['620','550','100%','100%','100%']" data-height="none"
                             data-whitespace="normal" data-type="text" data-actions='[]' data-responsive_offset="on" data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1750,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
                             data-textAlign="['center','center','center','center','center','center']">
-                            <a class="navigate" href="#subscribe_section">
-                                <span style="padding-left: 10px;color: #fff;font-family: 'Montserrat', sans-serif;font-weight: bold;text-transform: uppercase;">
+                            <a id="goToArrow" class="navigate" href="#subscribe_section">
+                                <span class="caption-text">
                                     <i class="icofont icofont-arrow-down"> </i>
                                 </span>
                             </a>
