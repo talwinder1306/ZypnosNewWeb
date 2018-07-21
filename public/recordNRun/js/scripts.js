@@ -119,7 +119,7 @@
         var payload = getSaveBotPayload();
         payload.token = $('#bottoken').val();
         payload.name = $('#botName').val();
-        payload.type = "API";
+        payload.type = $('#botType').val();
         payload.uid = payloadModel.uid;
         setAccessToken(payload.token, payload.type);
 
