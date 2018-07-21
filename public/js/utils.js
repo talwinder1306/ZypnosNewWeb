@@ -22,40 +22,40 @@
     $('#loginBtn').click(function (e) {
         var email = $('#loginEmail').val();
         var pass = $('#loginPwd').val();
-		
-		if(validateLogin(email,pass) == true) {
-			login(email, pass);
-		}
+
+        if (validateLogin(email, pass) == true) {
+            login(email, pass);
+        }
     });
 
     $('#signupBtn').click(function (e) {
         var name = $('#signupName').val();
         var email = $('#signupEmail').val();
         var password = "Zypnos123" + Math.floor(Math.random() * (1000000 - 99999) + 99999);
-		
-		if(validateSignUp(name, email) == true) {
-			var oUserDetails = {
-				userName: name,
-				emailId: email,
-				userPassword: password
-			};
-			signUp(oUserDetails);
-		}
+
+        if (validateSignUp(name, email) == true) {
+            var oUserDetails = {
+                userName: name,
+                emailId: email,
+                userPassword: password
+            };
+            signUp(oUserDetails);
+        }
     });
 
     $('#feedbackBtn').click(function (e) {
         var name = $('#feedbackName').val();
         var email = $('#feedbackEmail').val();
         var message = $('#feedbackMessage').val();
-		if(validateFeedback(name, email, message) == true) {
-			var oFeedbackPayload = {
-				name: name,
-				email: email,
-				message: message,
-				time: getTimeStamp()
-			}
-			sendFeedback(oFeedbackPayload);
-		}
+        if (validateFeedback(name, email, message) == true) {
+            var oFeedbackPayload = {
+                name: name,
+                email: email,
+                message: message,
+                time: getTimeStamp()
+            }
+            sendFeedback(oFeedbackPayload);
+        }
     });
 
     clearUser = function () {
@@ -68,22 +68,22 @@
         uid = user.uid;
     }
 
-    navToRnR = function(){
-        window.location.href = "recordNRun/index.html";
+    navToRnR = function () {
+        window.location.href = "http://developer.zypnos.com";
     }
 
-    clearLoginDialog = function(){
+    clearLoginDialog = function () {
         $('#loginEmail').val('');
         $('#loginPwd').val('');
     }
 
-    clearFeedbackForm = function(){
+    clearFeedbackForm = function () {
         $('#feedbackName').val('');
         $('#feedbackEmail').val('');
         $('#feedbackMessage').val('');
     }
 
-    clearSignUpForm = function(){
+    clearSignUpForm = function () {
         $('#signupName').val('');
         $('#signupEmail').val('');
     }
@@ -96,7 +96,7 @@
         };
         fErrorHandler = function (erro) {
             clearUser();
-			$('#loginError').append("Email/Password is incorrect");
+            $('#loginError').append("Email/Password is incorrect");
         };
         firebase.auth().signInWithEmailAndPassword(email, pass)
             .then(function (authData) {
@@ -105,7 +105,7 @@
                 }
                 else {
                     clearUser();
-					$('#loginError').append("Email/Password is incorrect");
+                    $('#loginError').append("Email/Password is incorrect");
                 }
             }, fErrorHandler).catch(fErrorHandler);
     }
@@ -114,6 +114,11 @@
         fSuccessHandler = function (oData) {
             clearSignUpForm();
             openMessageModel("Thanks for registering will get back to you soon");
+            sendMail({
+                bot_name: oUserDetails.userName,
+                email_id: oUserDetails.emailId,
+                bot_url: ''
+            });
         };
         fErrorHandler = function (erro) {
             openMessageModel("Unable to signup");
@@ -131,6 +136,11 @@
         fSuccessHandler = function (oData) {
             clearFeedbackForm();
             openMessageModel("Thank you for contacting us, we will get back to you soon!");
+            sendMail({
+                bot_name: oFeedbackPayload.name,
+                email_id: oFeedbackPayload.email,
+                bot_url: oFeedbackPayload.message
+            });
         };
         fErrorHandler = function (oData) {
             openMessageModel("Unable to send message");
@@ -155,51 +165,51 @@
         $('#messageModalText').text(textMessage);
         $('#messageModal').modal();
     }
-	
-	validateLogin = function (email, pass) {
-		$('#loginError').html("");
-		$('#loginEmail,#loginPwd').removeClass('errorLoginTextbox');
-		var validLogin = true;
-		if( email =='' || pass ==''){
-			$('#loginEmail,#loginPwd').addClass('errorLoginTextbox');
-			$('#loginError').append("Please enter email and password");
-			validLogin = false;
-		} else {
-			if(validateEmail(email) == false) {
-				$('#loginEmail').addClass('errorLoginTextbox');
-				$('#loginError').append("Please enter a valid email id<br/>");	
-				validLogin = false;
-			}
-			
-			if(pass.length < 6) {
-				$('#loginPwd').addClass('errorLoginTextbox');
-				$('#loginError').append("Password must be atleast 6 characters");
-				validLogin = false;
-			}
-			
-		}
-		return validLogin;
+
+    validateLogin = function (email, pass) {
+        $('#loginError').html("");
+        $('#loginEmail,#loginPwd').removeClass('errorLoginTextbox');
+        var validLogin = true;
+        if (email == '' || pass == '') {
+            $('#loginEmail,#loginPwd').addClass('errorLoginTextbox');
+            $('#loginError').append("Please enter email and password");
+            validLogin = false;
+        } else {
+            if (validateEmail(email) == false) {
+                $('#loginEmail').addClass('errorLoginTextbox');
+                $('#loginError').append("Please enter a valid email id<br/>");
+                validLogin = false;
+            }
+
+            if (pass.length < 6) {
+                $('#loginPwd').addClass('errorLoginTextbox');
+                $('#loginError').append("Password must be atleast 6 characters");
+                validLogin = false;
+            }
+
+        }
+        return validLogin;
     }
-	
-	validateEmail = function (email) {
-		var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-		if(reg.test(email) == true) {
-			return true;
-		}
-		return false;
-	}
-	
-	validateSignUp = function (name, email) {
-		$('#signupError').html("");
-		var validSignUp = true;
-		if( name =='' || email ==''){
-			$('#signupError').append("<p>Please enter name and email</p>");
-			validSignUp = false;
-		} else {
-			if(validateEmail(email) == false) {
-				$('#signupError').append("<p>Please enter a valid email id</p>");	
-				validSignUp = false;
-			}
+
+    validateEmail = function (email) {
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (reg.test(email) == true) {
+            return true;
+        }
+        return false;
+    }
+
+    validateSignUp = function (name, email) {
+        $('#signupError').html("");
+        var validSignUp = true;
+        if (name == '' || email == '') {
+            $('#signupError').append("<p>Please enter name and email</p>");
+            validSignUp = false;
+        } else {
+            if (validateEmail(email) == false) {
+                $('#signupError').append("<p>Please enter a valid email id</p>");
+                validSignUp = false;
+            }
 			/*
 			var reg = /^[a-zA-Z]+$/;
 			
@@ -209,26 +219,26 @@
 				validLogin = false;
 			}
 			*/
-		}
-		return validSignUp;
-	}
-	
-	validateFeedback = function (name, email, message) {
-		$('#feedbackError').html("");
-		$('#feedbackName,#feedbackEmail, #feedbackMessage').removeClass('errorFeedbackTextbox');
-		var validFeedback = true;
-		if( name =='' || email =='' || message == ''){
-			if(name == ''){ $('#feedbackName').addClass('errorFeedbackTextbox'); }
-			if(email == ''){ $('#feedbackEmail').addClass('errorFeedbackTextbox'); }
-			if(message == ''){ $('#feedbackMessage').addClass('errorFeedbackTextbox'); }
-			$('#feedbackError').append("Please enter all fields.");
-			validFeedback = false;
-		} else {
-			if(validateEmail(email) == false) {
-				$('#feedbackEmail').addClass('errorFeedbackTextbox');
-				$('#feedbackError').append("Please enter a valid email id");	
-				validFeedback = false;
-			}
+        }
+        return validSignUp;
+    }
+
+    validateFeedback = function (name, email, message) {
+        $('#feedbackError').html("");
+        $('#feedbackName,#feedbackEmail, #feedbackMessage').removeClass('errorFeedbackTextbox');
+        var validFeedback = true;
+        if (name == '' || email == '' || message == '') {
+            if (name == '') { $('#feedbackName').addClass('errorFeedbackTextbox'); }
+            if (email == '') { $('#feedbackEmail').addClass('errorFeedbackTextbox'); }
+            if (message == '') { $('#feedbackMessage').addClass('errorFeedbackTextbox'); }
+            $('#feedbackError').append("Please enter all fields.");
+            validFeedback = false;
+        } else {
+            if (validateEmail(email) == false) {
+                $('#feedbackEmail').addClass('errorFeedbackTextbox');
+                $('#feedbackError').append("Please enter a valid email id");
+                validFeedback = false;
+            }
 			/*
 			var reg = /^[a-zA-Z]+$/;
 			
@@ -238,8 +248,20 @@
 				validLogin = false;
 			}
 			*/
-		}
-		return validFeedback;
-	}
-	
+        }
+        return validFeedback;
+    }
+
+    sendMail = function (sentMessage) {
+        var service_id = "gmail";
+        var template_id = "zypnos";
+        var template_params = sentMessage;
+        emailjs.send(service_id, template_id, template_params).then(function () {
+            console.log("Sent");
+        },
+            function (err) {
+                console.log("Send email failed!\r\n Response:\n " + JSON.stringify(err))
+            });
+    }
+
 })();

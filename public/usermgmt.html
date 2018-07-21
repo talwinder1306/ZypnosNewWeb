@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Verify Account</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  		  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+  <h2 id="verificationFailed" style="display:none">Email Verification Failed</h2>
+  <form id="verificationPassed">
+	  <h2>Reset Password</h2>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <div class="form-group">
+      <label for="pwdConfirm">Password:</label>
+      <input type="password" class="form-control" id="pwdConfirm" placeholder="Repeat entered password" name="pwd">
+    </div>
+    <button type="button" class="btn btn-default" id="resetButton">Submit</button>
+  </form>
+</div>
+
+</body>
+<script src="assets/js/script.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+
+function handleResetPassword ( actionCode ){
+
+	$('#resetButton').on('click', function(e){
+		var pass = $('#pwd').val();
+		var conPass = $('#pwdConfirm').val();
+		
+		if(pass != conPass){
+			alert("Password and confirm password not equal");
+		}
+		else if(pass.length<8 || conPass.length<8){
+			alert("Password length should be greater than 8");
+		}
+		else {
+			getPostCall('/resetPassword', {actionCode : actionCode, newPassword : pass}, function(e){
+				window.location.href = "/";
+			},function(e){
+			});
+		}
+	
+	});
+};
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+};
+
+  // TODO: Implement getParameterByName()
+
+  // Get the action to complete.
+  var mode = getParameterByName('mode');
+  // Get the one-time code from the query parameter.
+  var actionCode = getParameterByName('oobCode');
+  // (Optional) Get the API key from the query parameter.
+  var apiKey = getParameterByName('apiKey');
+  // (Optional) Get the continue URL from the query parameter if available.
+  var continueUrl = getParameterByName('continueUrl');
+
+  
+  // Handle the user management action.
+  switch (mode) {
+    case 'resetPassword':
+      // Display reset password handler and UI.
+      handleResetPassword(actionCode, continueUrl);
+      break;
+    case 'recoverEmail':
+      // Display email recovery handler and UI.
+      handleRecoverEmail(actionCode);
+      break;
+    case 'verifyEmail':
+      // Display email verification handler and UI.
+      handleVerifyEmail( actionCode, continueUrl);
+      break;
+    default:
+      // Error: invalid mode.
+  }
+});
+</script>
+</html>
