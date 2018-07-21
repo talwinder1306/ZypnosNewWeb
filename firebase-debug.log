@@ -1,41 +1,50 @@
-[debug] [2018-07-21T10:17:13.652Z] ----------------------------------------------------------------------
-[debug] [2018-07-21T10:17:13.657Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
-[debug] [2018-07-21T10:17:13.657Z] CLI Version:   3.18.6
-[debug] [2018-07-21T10:17:13.657Z] Platform:      win32
-[debug] [2018-07-21T10:17:13.657Z] Node Version:  v8.6.0
-[debug] [2018-07-21T10:17:13.660Z] Time:          Sat Jul 21 2018 15:47:13 GMT+0530 (India Standard Time)
-[debug] [2018-07-21T10:17:13.660Z] ----------------------------------------------------------------------
+[debug] [2018-07-21T13:28:59.860Z] ----------------------------------------------------------------------
+[debug] [2018-07-21T13:28:59.864Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-07-21T13:28:59.864Z] CLI Version:   3.18.6
+[debug] [2018-07-21T13:28:59.864Z] Platform:      win32
+[debug] [2018-07-21T13:28:59.864Z] Node Version:  v8.6.0
+[debug] [2018-07-21T13:28:59.871Z] Time:          Sat Jul 21 2018 18:58:59 GMT+0530 (India Standard Time)
+[debug] [2018-07-21T13:28:59.872Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-07-21T10:17:13.688Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-07-21T10:17:13.690Z] > authorizing via signed-in user
-[debug] [2018-07-21T10:17:13.695Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/zypnos-70985  
+[debug] [2018-07-21T13:28:59.909Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T13:28:59.911Z] > authorizing via signed-in user
+[debug] [2018-07-21T13:28:59.915Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-21T13:28:59.915Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/xG7HOdIzFva3mXwkg1kVGF8w9Vlm9_X1XX4AA6mOOmd_5-JM92EhXmOqGdxEI7J9',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jul 21 2018 18:58:59 GMT+0530 (India Standard Time)
+[debug] [2018-07-21T13:29:00.186Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T13:29:00.202Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/zypnos-70985  
   
- Sat Jul 21 2018 15:47:13 GMT+0530 (India Standard Time)
-[debug] [2018-07-21T10:17:14.768Z] <<< HTTP RESPONSE 200
-[debug] [2018-07-21T10:17:14.770Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/zypnos-70985/tokens  
+ Sat Jul 21 2018 18:59:00 GMT+0530 (India Standard Time)
+[debug] [2018-07-21T13:29:01.385Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T13:29:01.386Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/zypnos-70985/tokens  
   
- Sat Jul 21 2018 15:47:14 GMT+0530 (India Standard Time)
-[debug] [2018-07-21T10:17:15.659Z] <<< HTTP RESPONSE 200
-[debug] [2018-07-21T10:17:15.661Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/zypnos-70985  
+ Sat Jul 21 2018 18:59:01 GMT+0530 (India Standard Time)
+[debug] [2018-07-21T13:29:02.289Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T13:29:02.290Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/zypnos-70985  
   
- Sat Jul 21 2018 15:47:15 GMT+0530 (India Standard Time)
-[debug] [2018-07-21T10:17:17.162Z] <<< HTTP RESPONSE 200
+ Sat Jul 21 2018 18:59:02 GMT+0530 (India Standard Time)
+[debug] [2018-07-21T13:29:03.821Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'C:\Firebase\ZypnosNewWeb'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2018-07-21T10:17:18.627Z] Fetching environment
-[debug] [2018-07-21T10:17:18.632Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1035587128080:getServerAppConfig  
+[debug] [2018-07-21T13:29:05.168Z] Fetching environment
+[debug] [2018-07-21T13:29:05.172Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1035587128080:getServerAppConfig  
   
- Sat Jul 21 2018 15:47:18 GMT+0530 (India Standard Time)
-[debug] [2018-07-21T10:17:18.632Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1035587128080/clients/_:getWebAppConfig  
+ Sat Jul 21 2018 18:59:05 GMT+0530 (India Standard Time)
+[debug] [2018-07-21T13:29:05.172Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1035587128080/clients/_:getWebAppConfig  
   
- Sat Jul 21 2018 15:47:18 GMT+0530 (India Standard Time)
-[debug] [2018-07-21T10:17:19.275Z] <<< HTTP RESPONSE 200
-[debug] [2018-07-21T10:17:19.276Z] Starting @google-cloud/functions-emulator
-[debug] [2018-07-21T10:17:20.040Z] <<< HTTP RESPONSE 200
+ Sat Jul 21 2018 18:59:05 GMT+0530 (India Standard Time)
+[debug] [2018-07-21T13:29:05.933Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T13:29:05.933Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-21T13:29:06.064Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
 
-[debug] [2018-07-21T10:17:21.989Z] Parsing function triggers
+[debug] [2018-07-21T13:29:11.354Z] Parsing function triggers
 [info] +  functions: app: http://localhost:5001/zypnos-70985/us-central1/app

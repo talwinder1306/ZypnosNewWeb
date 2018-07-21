@@ -13,7 +13,7 @@
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            setUser();
+            setUser(user);
         } else {
             clearUser();
         }
@@ -25,6 +25,24 @@
 
         if (validateLogin(email, pass) == true) {
             login(email, pass);
+        }
+    });
+
+    $('#logout').click(function (e) {
+        var userId = "";
+        if (firebase.auth() && firebase.auth().currentUser) {
+            userId = firebase.auth().currentUser.uid;
+        }
+        if (userId) {
+            firebase.auth().signOut().then(function () {
+                openMessageModel("Logout Successful");
+                clearUser();
+            }).catch(function (error) {
+                openMessageModel("Unable to logout");
+            });
+        }
+        else {
+            openMessageModel("User not logged in.");
         }
     });
 
@@ -61,19 +79,19 @@
     clearUser = function () {
         isUserLogged = false;
         uid = '';
-		$('#login').removeClass('hide');
-		$('#logout').addClass('hide');
-		$('#goToSubscribe, #goToArrow').removeClass('hide');
-		$('#goToTool').addClass('hide');
+        $('#login').removeClass('hide');
+        $('#logout').addClass('hide');
+        $('#goToSubscribe, #goToArrow').removeClass('hide');
+        $('#goToTool').addClass('hide');
     }
 
     setUser = function (user) {
         isUserLogged = true;
         uid = user.uid;
-		$('#login').addClass('hide');
-		$('#logout').removeClass('hide');
-		$('#goToSubscribe, #goToArrow').addClass('hide');
-		$('#goToTool').removeClass('hide');
+        $('#login').addClass('hide');
+        $('#logout').removeClass('hide');
+        $('#goToSubscribe, #goToArrow').addClass('hide');
+        $('#goToTool').removeClass('hide');
     }
 
     navToRnR = function () {
