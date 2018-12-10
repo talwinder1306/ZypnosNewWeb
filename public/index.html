@@ -132,23 +132,23 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active">
-                                <a href="#home2">Home</a>
+                                <a id="homepage-homeBtn" href="#home2">Home</a>
                             </li>
                             <li>
-                                <a href="#description_tool">About</a>
+                                <a id="homepage-aboutBtn" href="#description_tool">About</a>
                             </li>
                             <li>
-                                <a href="#product">Product</a>
+                                <a id="homepage-productBtn" href="#product">Product</a>
                             </li>
                             <li>
-                                <a href="#feature">Features</a>
+                                <a id="homepage-featureBtn" href="#feature">Features</a>
                             </li>
                             <li>
-                                <a href="#contact">Request a demo</a>
+                                <a id="homepage-requestDemoBtn" href="#contact">Request a demo</a>
                             </li>
                             <li>
-                                <a id="login" class="border-menu-item" data-toggle="modal" data-target="#modalLoginForm">Login</a>
-                                <a id="logout" class="border-menu-item hide">Logout</a>
+                                <a id="homepage-loginBtn" class="border-menu-item" data-toggle="modal" data-target="#loginForm">Login</a>
+                                <a id="homepage-logoutBtn" class="border-menu-item hide">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -212,10 +212,10 @@
                             data-height="none" data-whitespace="normal" data-type="text" data-actions='[{"event":"mouseenter","action":"startlayer","layer":"slide-2971-layer-18","delay":""},{"event":"mouseleave","action":"stoplayer","layer":"slide-2971-layer-18","delay":""},{"event":"click","action":"startlayer","layer":"slide-2971-layer-15","delay":""},{"event":"click","action":"startlayer","layer":"slide-2971-layer-19","delay":""},{"event":"click","action":"startlayer","layer":"slide-2971-layer-20","delay":"1000"},{"event":"click","action":"playvideo","layer":"slide-2971-layer-15","delay":"1000"}]'
                             data-responsive_offset="on" data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1750,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
                             data-textAlign="['center','center','center','center','center','center']">
-                            <a id="goToSubscribe" class="navigate" href="#subscribe_section">
+                            <a id="homepage-signupTextLink" class="navigate" href="#signupForm">
                                 <span class="caption-text">Sign up for Beta</span>
                             </a>
-                            <a id="goToTool" class="navigate hide" onclick="navToRnR()">
+                            <a id="homepage-goToTool" class="navigate hide" onclick="navToRnR()">
                                 <span class="caption-text">START TESTING</span>
                             </a>
                         </div>
@@ -226,7 +226,7 @@
                             data-height="none" data-whitespace="normal" data-type="text" data-actions='[]'
                             data-responsive_offset="on" data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1750,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
                             data-textAlign="['center','center','center','center','center','center']">
-                            <a id="goToArrow" class="navigate" href="#subscribe_section">
+                            <a id="homepage-signupArrowLink" class="navigate" href="#signupForm">
                                 <span class="caption-text">
                                     <i class="icofont icofont-arrow-down"> </i>
                                 </span>
@@ -244,7 +244,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <img src="img/screenshot/mockup-3.png" alt="" style="width:520px;">
+                    <img src="img/screenshot/zypnos-dashboard.png" alt="Zypnos - Testing platform" style="width:520px;">
                     <!--<a href='https://www.freepik.com/free-photo/man-looking-his-phone_925255.htm'>Designed by Freepik</a>
 						<a href='https://www.freepik.com/free-vector/statistical-data-abstract-on-paper-and-tablet_1311213.htm'>Designed by Freepik</a>-->
                 </div>
@@ -378,7 +378,7 @@
 
 
     <!--================Start Download Area =================-->
-    <section class="download_area subcribe_area_two" id="subscribe_section">
+    <section class="download_area subcribe_area_two" id="signupForm">
         <div class="container">
             <div class="subscrib_inner">
                 <div class="main_title color_white">
@@ -388,13 +388,13 @@
                 </div>
                 <div id="signupError" class="color_white"><br /></div>
                 <div class="input-group">
-                    <input id="signupName" type="text" class="form-control old sign-up-input" placeholder="&#xf007;   Name*">
+                    <input id="signupForm-name" type="text" class="form-control old sign-up-input" placeholder="&#xf007;   Name*">
                 </div>
                 <div class="input-group">
-                    <input id="signupEmail" type="text" class="form-control old sign-up-input" placeholder="   E-Mail*">
+                    <input id="signupForm-email" type="text" class="form-control old sign-up-input" placeholder="   E-Mail*">
                 </div>
                 <div class="input-group">
-                    <button id="signupBtn" class="btn-subscribe btn btn-default sign-up-btn" type="button">Send</button>
+                    <button id="signupForm-submitBtn" class="btn-subscribe btn btn-default sign-up-btn" type="button">Send</button>
                 </div>
 
             </div>
@@ -416,19 +416,19 @@
                         <form class="contact_us_form row" action="contact_process.php" method="post" id="contactForm"
                             novalidate="novalidate">
                             <div class="form-group col-lg-12">
-                                <div id="feedbackError" class="error"><br /> </div>
+                                <div id="contactForm-error" class="error"><br /> </div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control" id="feedbackName" name="name" placeholder="Full Name*">
+                                <input type="text" class="form-control" id="contactForm-name" name="name" placeholder="Full Name*">
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="email" class="form-control" id="feedbackEmail" name="email" placeholder="Email*">
+                                <input type="email" class="form-control" id="contactForm-email" name="email" placeholder="Email*">
                             </div>
                             <div class="form-group col-lg-12">
-                                <textarea class="form-control" name="message" id="feedbackMessage" rows="1" placeholder="Message*"></textarea>
+                                <textarea class="form-control" name="message" id="contactForm-message" rows="1" placeholder="Message*"></textarea>
                             </div>
                             <div class="form-group col-md-12">
-                                <button id="feedbackBtn" type="button" value="submit" class="btn theme_btn form-control">Submit
+                                <button id="contactForm-submitBtn" type="button" value="submit" class="btn theme_btn form-control">Submit
                                     now</button>
                             </div>
                         </form>
@@ -473,7 +473,7 @@
     <!--================End Download Area =================-->
 
     <!--====================End Seve Contact area ====================-->
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -486,23 +486,23 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div id="loginError" class="error"><br /></div>
+                        <div id="loginForm-errorMsg" class="error"><br /></div>
                         <div class="form-group">
                             <label for="email">Email address</label>
                             <div class="input-group pb-modalreglog-input-group">
-                                <input type="email" class="form-control" id="loginEmail" placeholder="Email">
+                                <input type="email" class="form-control" id="loginForm-email" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <div class="input-group pb-modalreglog-input-group">
-                                <input type="password" class="form-control" id="loginPwd" placeholder="Password">
+                                <input type="password" class="form-control" id="loginForm-password" placeholder="Password">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="loginBtn" class="btn btn-primary">Log in</button>
+                    <button type="button" id="loginForm-SubmitBtn" class="btn btn-primary">Log in</button>
                 </div>
             </div>
         </div>
