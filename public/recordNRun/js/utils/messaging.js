@@ -60,7 +60,7 @@
             success: (body) => {
                 var message = "";
                 try {
-                    message = body.results.messages[0].content;
+                    message = body.results.messages;
                 } catch (error) {
                     message = "";
                 }

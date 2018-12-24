@@ -1,0 +1,81 @@
+[debug] [2018-12-24T13:36:36.110Z] ----------------------------------------------------------------------
+[debug] [2018-12-24T13:36:36.114Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-12-24T13:36:36.115Z] CLI Version:   5.0.1
+[debug] [2018-12-24T13:36:36.115Z] Platform:      win32
+[debug] [2018-12-24T13:36:36.115Z] Node Version:  v10.10.0
+[debug] [2018-12-24T13:36:36.121Z] Time:          Mon Dec 24 2018 19:06:36 GMT+0530 (India Standard Time)
+[debug] [2018-12-24T13:36:36.121Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-24T13:36:36.192Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-24T13:36:36.196Z] > authorizing via signed-in user
+[debug] [2018-12-24T13:36:36.196Z] [iam] checking project zypnos-70985 for permissions ["firebase.projects.get"]
+[debug] [2018-12-24T13:36:36.200Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-12-24T13:36:36.200Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-12-24T13:36:36.535Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-24T13:36:36.566Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/zypnos-70985:testIamPermissions  
+
+[debug] [2018-12-24T13:36:38.250Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-24T13:36:38.252Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/zypnos-70985  
+ 
+[debug] [2018-12-24T13:36:39.828Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Firebase\ZypnosNewWeb'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-12-24T13:36:49.978Z] Fetching environment
+[debug] [2018-12-24T13:36:50.001Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1035587128080:getServerAppConfig  
+ 
+[debug] [2018-12-24T13:36:50.002Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1035587128080/clients/_:getWebAppConfig  
+ 
+[debug] [2018-12-24T13:36:50.463Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-24T13:36:50.463Z] Starting @google-cloud/functions-emulator
+[debug] [2018-12-24T13:36:50.675Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2018-12-24T13:36:58.759Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/zypnos-70985/us-central1/app
+[info] [hosting] Rewriting /getBots?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22 to local function app
+[info] [hosting] Rewriting /saveBot to local function app
+[info] [hosting] Rewriting /getBots?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22 to local function app
+[info] [hosting] Rewriting /deleteBot?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22&botId=B_1533042665025 to local function app
+[info] [hosting] Rewriting /deleteBot?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22&botId=B_1540888785357 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1539150288416 to local function app
+[info] [hosting] Rewriting /deleteBot?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22&botId=B_1539087014902 to local function app
+[info] [hosting] Rewriting /saveBot to local function app
+[info] [hosting] Rewriting /deleteBot?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22&botId=B_1545659770218 to local function app
+[info] [hosting] Rewriting /saveBot to local function app
+[info] [hosting] Rewriting /saveTestCase to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545660712735 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545660712735 to local function app
+[info] [hosting] Rewriting /deleteTestCase?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22&botId=B_1545660645260&testCaseId=T_1545660712735 to local function app
+[info] [hosting] Rewriting /saveTestCase to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /getBots?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /getBots?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /getBots?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /deleteTestCase?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22&botId=B_1545660645260&testCaseId=T_1545661035334 to local function app
+[info] [hosting] Rewriting /getBots?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22 to local function app
+[info] [hosting] Rewriting /getBots?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22 to local function app
+[info] [hosting] Rewriting /saveTestCase to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661884128 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545661884128 to local function app
+[info] [hosting] Rewriting /deleteTestCase?uid=EHm5c8zWozcYSWYrZpz0sgdi1b22&botId=B_1545660645260&testCaseId=T_1545661884128 to local function app
+[info] [hosting] Rewriting /saveTestCase to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662039653 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662039653 to local function app
+[info] [hosting] Rewriting /saveTestCase to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662110774 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662039653 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662110774 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662039653 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662039653 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662039653 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662039653 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1545662110774 to local function app

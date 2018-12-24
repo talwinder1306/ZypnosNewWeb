@@ -160,8 +160,8 @@
 
     sendUserMessage = function (message) {
         sendMessageToBot(message, payloadModel).then((result) => {
-            addBotMessageToUI(result);
-            addBotMessageToPayload(result);
+            addBotMultipleMessagesToUI(result);
+            addBotMultipleMessagesToPayload(result);
         }).catch(() => {
 
         });
@@ -193,6 +193,18 @@
     }
     addBotMessageToPayload = function (message) {
         payloadModel.testCasePayload.chats[new Date().getTime() + "_BOT"] = message;
+    }
+
+    addBotMultipleMessagesToUI = function(messages){
+        jQuery.each(messages, function(index, message){
+            addBotMessageToUI(message.content);
+        });
+    }
+
+    addBotMultipleMessagesToPayload = function(messages){
+        jQuery.each(messages, function(index, message){
+            addBotMessageToPayload(message.content);
+        });
     }
 
     //======ReRun Test Case========Need to be modified
@@ -325,18 +337,27 @@
     function sendMessageTemp(payload, key) {
         addUserMessageToUI(payload[key]);
         sendMessageToBot(payload[key], payloadModel).then((result) => {
-            if (payload[Object.keys(payload)[0]] != result) {
-                addBotMessageToUIActual(result);
-                addBotMessageToUIExpected(payload[Object.keys(payload)[0]]);
-                addFailMessageToUi();
-            }
-            else {
-                addBotMessageToUI(result);
-                delete payload[Object.keys(payload)[0]];
-                if (payload[Object.keys(payload)[0]])
-                    sendMessageTemp(payload, Object.keys(payload)[0]);
-                else
-                    addPassMessageToUi();
+            var flag = '';
+            jQuery.each(result, function(index, message){
+                if (payload[Object.keys(payload)[0]] != message.content) {
+                    addBotMessageToUIActual(message.content);
+                    addBotMessageToUIExpected(payload[Object.keys(payload)[0]]);
+                    addFailMessageToUi();
+                    flag = 'FAIL';
+                    return false;
+                }
+                else {
+                    addBotMessageToUI(message.content);
+                    delete payload[Object.keys(payload)[0]];
+                    if (!payload[Object.keys(payload)[0]]){
+                        addPassMessageToUi();
+                        flag = 'PASS';
+                        return false;
+                    }
+                }
+            });
+            if(!(flag == 'FAIL' || flag == 'PASS')){
+                sendMessageTemp(payload, Object.keys(payload)[0]);
             }
         }).catch(() => {
 
