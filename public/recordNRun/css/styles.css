@@ -683,6 +683,106 @@ body {
   max-width: 205px;
   line-height: 130%;
 }
+
+#frame .content .messages ul li .msg-image .image-img{
+	width: 250px;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+#frame .content .messages ul li .msg-card {
+	width:250px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 2px;
+}
+#frame .content .messages ul li .msg-card .card-body {
+	margin: 5px;
+	padding: 10px 15px;
+}
+#frame .content .messages ul li .msg-card .card-body .card-title{
+	font-size:18px;
+	vertical-align: top;
+	font-weight: 700;
+}
+
+#frame .content .messages ul li .msg-card .card-body .card-text {
+    font-size:16px;
+	padding: 10px 0px;
+}
+
+#frame .content .messages ul li .msg-card .card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+	border-radius:2px;
+	margin-bottom: 10px;
+}
+
+#frame .content .messages ul li .msg-carousel {
+    overflow: auto;
+}
+
+#frame .content .messages ul li .msg-carousel .box {
+  position:relative;
+  /*margin:0 auto;*/
+  padding:5px;
+  width:70%;
+}
+
+#frame .content .messages ul li .msg-carousel .box .scroller {
+  color:#ffffff;
+  width:40px;
+  text-align:center;
+  cursor:pointer;
+  display:none;
+  padding:5px;
+  margin-top:5px;
+}
+
+#frame .content .messages ul li .msg-carousel .box .scroller-right{
+  float:right;
+}
+
+#frame .content .messages ul li .msg-carousel .box .scroller-left {
+  float:left;
+}
+
+#frame .content .messages ul li .msg-carousel .box .wrapper {
+    position:relative;
+    margin:0 auto;
+    overflow:hidden;
+  padding:5px;
+    height:400px;
+}
+
+#frame .content .messages ul li .msg-carousel .box .wrapper .list {
+    position:absolute;
+    left:0px;
+    top:0px;
+    min-width:3000px;
+    margin-left:12px;
+    margin-top:0px;
+}
+
+
+#frame .content .messages ul li .msg-carousel .box .wrapper .list .item{
+    padding:10px;
+   /*float:left;*/
+    display:table-cell;
+    margin:1px;
+    position:relative;
+    cursor:grab;
+    cursor:-webkit-grab;
+    vertical-align:middle;
+}
+
+#frame .content .messages ul li .msg-carousel .box .scroller .arrow {
+  top: 155px;
+  font-size: 2em;
+  color: #2c3e50;
+}
+
 @media screen and (min-width: 735px) {
   #frame .content .messages ul li p {
     max-width: 300px;
@@ -706,6 +806,8 @@ body {
   font-size: 0.8em;
   color: #32465a;
 }
+ 
+
 @media screen and (max-width: 735px) {
   #frame .content .message-input .wrap input {
     padding: 15px 32px 16px 8px;
