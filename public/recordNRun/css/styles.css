@@ -875,3 +875,41 @@ body {
   /* To center horizontally */
   margin: 0 auto;
 }
+
+.list-group-item {
+  max-width: 40%;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.list-img-left {
+  width: 75px !important;
+  height: 75px;
+  border-radius: none !important;
+  margin-right: 10px;
+}
+
+.list-title {
+  padding: 0 !important;
+  padding-bottom: 5px !important;
+}
+
+.list-text {
+  padding: 0 !important;
+  padding-bottom: 5px !important;
+}
+
+.list-button {
+  padding-bottom: 5px;
+  padding-top: 5px; 
+}
+
+.quick-button {
+  padding-bottom: 5px;
+  padding-top: 5px; 
+}
+
+.quick-reply {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}

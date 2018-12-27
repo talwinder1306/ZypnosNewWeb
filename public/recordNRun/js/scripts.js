@@ -163,7 +163,7 @@
             addBotMultipleMessagesToUI(result);
             addBotMultipleMessagesToPayload(result);
         }).catch(() => {
-
+            
         });
     }
 
@@ -197,7 +197,7 @@
 
     addBotMultipleMessagesToUI = function(messages){
         jQuery.each(messages, function(index, message){
-            addBotMessageToUI(message.content);
+            addBotMessageToUI(message);
         });
     }
 
