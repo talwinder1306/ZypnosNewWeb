@@ -203,7 +203,7 @@
 
     addBotMultipleMessagesToPayload = function(messages){
         jQuery.each(messages, function(index, message){
-            addBotMessageToPayload(message.content);
+            addBotMessageToPayload(message);
         });
     }
 
