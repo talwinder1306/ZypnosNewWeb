@@ -68,6 +68,12 @@
             case "carousel":
                 addBotMessageToUICarousel(message, differnceString);
                 break;
+            default:  //temporary fix for dialogflow messages
+                message = {
+                    content: message
+                };
+                addBotMessageToUIText(message, differnceString);
+                break;
         }
         
         $('.message-input input').val(null);
