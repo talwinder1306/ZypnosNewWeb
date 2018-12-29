@@ -901,15 +901,22 @@ body {
 
 .list-button {
   padding-bottom: 5px;
-  padding-top: 5px; 
+  padding-top: 5px;
+  margin-bottom: 5px;
 }
 
 .quick-button {
   padding-bottom: 5px;
   padding-top: 5px; 
+  margin: 2px;
 }
 
 .quick-reply {
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+.button-button {
+  margin: 2px;
+  padding: 5px;
 }

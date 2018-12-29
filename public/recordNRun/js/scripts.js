@@ -339,15 +339,15 @@
         sendMessageToBot(payload[key], payloadModel).then((result) => {
             var flag = '';
             jQuery.each(result, function(index, message){
-                if (payload[Object.keys(payload)[0]] != message.content) {
-                    addBotMessageToUIActual(message.content);
+                if (JSON.stringify(payload[Object.keys(payload)[0]].content) != JSON.stringify(message.content)) {
+                    addBotMessageToUIActual(message);
                     addBotMessageToUIExpected(payload[Object.keys(payload)[0]]);
                     addFailMessageToUi();
                     flag = 'FAIL';
                     return false;
                 }
                 else {
-                    addBotMessageToUI(message.content);
+                    addBotMessageToUI(message);
                     delete payload[Object.keys(payload)[0]];
                     if (!payload[Object.keys(payload)[0]]){
                         addPassMessageToUi();

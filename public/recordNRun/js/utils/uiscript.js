@@ -4,81 +4,87 @@
         $('.message-input input').val(null);
         $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     };
-    addBotMessageToUIText = function(message) {
-        $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message.content + '</p></li>').appendTo($('.messages ul'));
+    addBotMessageToUIText = function(message, differnceString) {
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message.content + '</p>' + differnceString + '</li>').appendTo($('.messages ul'));
     };
-    addBotMessageToUIQuickReply = function(message) {
+    addBotMessageToUIQuickReply = function(message, differnceString) {
         var buttonLength = message.content.buttons.length;
         var buttonString = "";
         message.content.buttons.forEach(element => {
             buttonString += '<button type="button" class="btn quick-button">' + element.title + '</button>';
         });
-        $('<li class="sent"><div><img src="./images/bot.png" alt="" /><p>' + message.content.title + '</p><div class="quick-reply">' + buttonString +  '</div></div></li>').appendTo($('.messages ul'));
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><div style="display: flow-root"><p>' + message.content.title + '</p><div class="quick-reply">' + buttonString +  '</div>' + differnceString + '</div></li>').appendTo($('.messages ul'));
     };
-    addBotMessageToUIList  = function(message) {
+    addBotMessageToUIList  = function(message, differnceString) {
         var listString = ""
 
         message.content.elements.forEach(element => {
-            var oneListString = '<li class="sent list-group-item"><div><img class="list-img-left" src="' + element.imageUrl + '" alt="Card image"><div><div class="list-title">' + element.title + '</div><div class="list-text">' + element.subtitle + '</div><button type="button" class="btn list-button">' + element.buttons[0].title + '</button></div></div></li>';
+            var oneListString = '<div class="list-group-item"><img class="list-img-left" src="' + element.imageUrl + '" alt="Card image"><div><div class="list-title">' + element.title + '</div><div class="list-text">' + element.subtitle + '</div><button type="button" class="btn list-button">' + element.buttons[0].title + '</button></div></div>';
             listString += oneListString;
         });
 
-        $('<li class="sent"><div><img src="./images/bot.png" alt="" />' + listString + '</div></li>').appendTo($('.messages ul'));
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><div style="display: flow-root">' + listString + differnceString + '</div></li>').appendTo($('.messages ul'));
     };
 
-    addBotMessageToUIPicture = function(message) {
-        $('<li class="sent"><img src="./images/bot.png" alt="" /><div class="msg-image"><img src="' + message.content + '" class="image-img"></div></li>').appendTo($('.messages ul'));
+    addBotMessageToUIPicture = function(message, differnceString) {
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><div class="msg-image"><img src="' + message.content + '" class="image-img"></div>' + differnceString + '</li>').appendTo($('.messages ul'));
     };
 
-    addBotMessageToUIButton = function(message) {
+    addBotMessageToUIButton = function(message, differnceString) {
+        var buttonLength = message.content.buttons.length;
+        var buttonString = "";
+        message.content.buttons.forEach(element => {
+            buttonString += '<button type="button" class="btn list-button">' + element.title + '</button>';
+        });
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><div style="display: flow-root"><div class="list-group-item" style="display: grid;"><div class="list-title">' + message.content.title + '</div>' + buttonString + '</div>' + differnceString + '</div></li>').appendTo($('.messages ul'));
+    };
+    addBotMessageToUICard = function(message, differnceString) {
 
     };
-    addBotMessageToUICard = function(message) {
-
-    };
-    addBotMessageToUICarousel = function(message) {
+    addBotMessageToUICarousel = function(message, differnceString) {
 
     };
 
-    addBotMessageToUI = function (message) {
+    addBotMessage = function (message, differnceString) {
         switch (message.type) {
             case "text":
-                addBotMessageToUIText(message);
+                addBotMessageToUIText(message, differnceString);
                 break;
             case "quickReplies":
-                addBotMessageToUIQuickReply(message);
+                addBotMessageToUIQuickReply(message, differnceString);
                 break;
             case "list":
-                addBotMessageToUIList(message);
+                addBotMessageToUIList(message, differnceString);
                 break;
             case "picture":
-                addBotMessageToUIPicture(message);
+                addBotMessageToUIPicture(message, differnceString);
                 break;
             case "buttons":
-                addBotMessageToUIButton(message);
+                addBotMessageToUIButton(message, differnceString);
                 break;
             case "card":
-                addBotMessageToUICard(message);
+                addBotMessageToUICard(message, differnceString);
                 break;
             case "carousel":
-                addBotMessageToUICarousel(message);
+                addBotMessageToUICarousel(message, differnceString);
                 break;
         }
         
         $('.message-input input').val(null);
         $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     };
+
+    addBotMessageToUI = function(message) {
+        var differnceString = '';
+        addBotMessage(message, differnceString);
+    };
     addBotMessageToUIActual = function (message) {
-        $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message + '</p>' +
-            '&nbsp;<p class="actual">Actual</p></li>').appendTo($('.messages ul'));
-        $('.message-input input').val(null);
-        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+        var differnceString = '<p class="actual">Actual</p>';
+        addBotMessage(message, differnceString);
     };
     addBotMessageToUIExpected = function (message) {
-        $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message + '</p>' +
-            '&nbsp;<p class="expect">Expected</p></li>').appendTo($('.messages ul'));
-        $('.message-input input').val(null);
-        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+        var differnceString = '<p class="expect">Expected</p>';
+        addBotMessage(message, differnceString);
     };
     addFailMessageToUi = function () {
         $('<li class="fail"><p>Result : Failed</p></li>').appendTo($('.messages ul'));

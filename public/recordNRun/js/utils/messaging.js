@@ -31,7 +31,11 @@
         clientAPI.textRequest(message).then(function (response) {
             var result;
             try {
-                result = response.result.fulfillment.speech
+                // Temporary fix for dialogflow text messages
+                var result = [{
+                    type: "text",
+                    content: response.result.fulfillment.speech
+                }];
             } catch (error) {
                 result = "";
             }
