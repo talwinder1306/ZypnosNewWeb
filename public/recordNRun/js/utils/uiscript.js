@@ -1,4 +1,7 @@
 (function () {
+    var idNum = 0;
+    var scrollBarWidths = 40;
+
     addUserMessageToUI = function (message) {
         $('<li class="replies"><img src="./images/profile.jpg" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
         $('.message-input input').val(null);
@@ -8,12 +11,18 @@
         $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message.content + '</p>' + differnceString + '</li>').appendTo($('.messages ul'));
     };
     addBotMessageToUIQuickReply = function(message, differnceString) {
+        idNum = idNum + 1;
+        var contentString = '<div class="msg-quick-reply"><p>' + message.content.title + '</p><div class="box" id="box-' + idNum
+                    +'"><div class="scroller scroller-left" id="scroller-left-' + idNum +'"><i class="glyphicon glyphicon-chevron-left arrow"></i></div><div class="scroller scroller-right" id="scroller-right-' + idNum 
+                    + '"><i class="glyphicon glyphicon-chevron-right arrow"></i></div><div class="wrapper" id="wrapper-' + idNum +'"><div class="list" id="list-' + idNum + '">';
+        
         var buttonLength = message.content.buttons.length;
-        var buttonString = "";
+        var buttonString = "";  
         message.content.buttons.forEach(element => {
-            buttonString += '<button type="button" class="btn quick-button">' + element.title + '</button>';
+            buttonString += '<div class="item"><button type="button" class="btn quick-button">' + element.title + '</button></div>';
         });
-        $('<li class="sent"><img src="./images/bot.png" alt="" /><div style="display: flow-root"><p>' + message.content.title + '</p><div class="quick-reply">' + buttonString +  '</div>' + differnceString + '</div></li>').appendTo($('.messages ul'));
+        $('<li class="sent"><img src="./images/bot.png" alt="" />' + contentString + buttonString +  '</div></div></div>' + differnceString + '</div></li>').appendTo($('.messages ul'));
+        reAdjust(idNum);
     };
     addBotMessageToUIList  = function(message, differnceString) {
         var listString = ""
@@ -31,7 +40,6 @@
     };
 
     addBotMessageToUIButton = function(message, differnceString) {
-        var buttonLength = message.content.buttons.length;
         var buttonString = "";
         message.content.buttons.forEach(element => {
             buttonString += '<button type="button" class="btn list-button">' + element.title + '</button>';
@@ -39,10 +47,39 @@
         $('<li class="sent"><img src="./images/bot.png" alt="" /><div style="display: flow-root"><div class="list-group-item" style="display: grid;"><div class="list-title">' + message.content.title + '</div>' + buttonString + '</div>' + differnceString + '</div></li>').appendTo($('.messages ul'));
     };
     addBotMessageToUICard = function(message, differnceString) {
+        var buttonString = "";
+        message.content.buttons.forEach(element => {
+            buttonString += '<button type="button" class="btn btn-primary">' + element.title + '</button>';
+        });
 
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><div class="panel panel-default msg-card"><img src="' 
+            + message.content.imageUrl + '" class="card-img-top"> <div class="card-body"><h4 class="card-title">' + message.content.title +
+            '</h4><p class="card-text">' + message.content.subtitle + '</p>' +  buttonString
+            + '</div>' + differnceString + '</li>').appendTo($('.messages ul'));
     };
-    addBotMessageToUICarousel = function(message, differnceString) {
 
+    addBotMessageToUICarousel = function(message, differnceString) {
+        idNum = idNum + 1;
+        var itemString = "";
+        var contentString = '<div class="msg-carousel"><div class="box" id="box-' + idNum
+                    +'"><div class="scroller scroller-left" id="scroller-left-' + idNum +'"><i class="glyphicon glyphicon-chevron-left arrow"></i></div><div class="scroller scroller-right" id="scroller-right-' + idNum 
+                    + '"><i class="glyphicon glyphicon-chevron-right arrow"></i></div><div class="wrapper" id="wrapper-' + idNum +'"><div class="list" id="list-' + idNum + '">';
+        message.content.forEach(element => {
+        var buttonString = "";
+        if(element.buttons != undefined && element.buttons.length > 0) {
+            element.buttons.forEach(elementButton => {
+                        buttonString += '<button type="button" class="btn btn-primary">' + elementButton.title + '</button>';
+            });
+        }
+       
+        itemString += '<div class="item"><div class="panel panel-default msg-card"><img src="' 
+            + element.imageUrl + '" class="card-img-top"> <div class="card-body"><h4 class="card-title">' + element.title +
+            '</h4><p class="card-text">' + element.subtitle + '</p>' +  buttonString
+            + '</div></div></div>' 
+        });
+
+       $('<li class="sent"><img src="./images/bot.png" alt="" />' + contentString + "" + itemString + '</div></div></div></div>'+ differnceString + '</li>').appendTo($('.messages ul'));
+       reAdjust(idNum);
     };
 
     addBotMessage = function (message, differnceString) {
@@ -190,5 +227,96 @@
         else
             $('#cover').css('z-index', 99);
     }
+
+    var widthOfList = function(idNum){
+      var list = $("#list-"+idNum);
+      var items = list.find(".item");
+      var itemsWidth = 0;
+      items.each(function(){
+        var itemWidth = $(this).outerWidth(true);
+        itemsWidth+=itemWidth;
+      });
+      return itemsWidth;
+    };
+
+    var averageWidthOfItems = function(idNum){
+      var list = $("#list-"+idNum);
+      var items = list.find(".item");
+      var itemsWidth = 0;
+      var itemCount = 0;
+      items.each(function(){
+        var itemWidth = $(this).outerWidth();
+        itemsWidth+=itemWidth;
+        itemCount++;
+      });
+      return itemsWidth/itemCount;
+    };
+
+    var widthOfHidden = function(idNum){
+      return (($('#wrapper-'+idNum).outerWidth())-widthOfList()-getLeftPosi())-scrollBarWidths;
+    };
+
+    var widthOfWrapper = function(idNum){
+      return $('#wrapper-' + idNum).outerWidth();
+    };
+
+    var getLeftPosi = function(idNum){
+      return $('#list-'+idNum).position().left;
+    };
+
+    var reAdjust = function(idNum){
+      if(idNum == undefined || idNum == ""){
+        $('.scroller-right').show();
+      }
+      else {
+      if ((Math.abs(getLeftPosi(idNum)) + widthOfWrapper(idNum)) <= widthOfList(idNum)) {
+        $('#scroller-right-' + idNum).show();
+      }
+      else {
+        $('#scroller-right-'+ idNum).hide();
+      }
+      
+      if (getLeftPosi(idNum)<0) {
+        $('#scroller-left-' + idNum).show();
+      }
+      else {
+        var list = $("#list-"+idNum);
+        var items = list.find(".item");
+        items.animate({left:"-="+getLeftPosi(idNum)+"px"},'slow');
+        $('#scroller-left-'+idNum).hide();
+      }
+    }
+    }
+
+    $(window).on('resize',function(e){  
+        reAdjust();
+    });
+
+    $(document).on("click", ".scroller-right", function(){
+
+      var elemId = $(this).attr('id');
+      var splitId = elemId.split('-');
+      var idNum = splitId[splitId.length - 1];
+
+      $('#scroller-left-' + idNum).fadeIn('slow');
+      $('#scroller-right-' + idNum).fadeOut('slow');
+      var leftScroll = -(averageWidthOfItems(idNum));
+      $('#list-' + idNum).animate({left:"+=" + leftScroll +"px"},'slow',function(){
+        reAdjust(idNum);
+      });   
+    });
+
+    $(document).on("click", ".scroller-left", function() {
+        var elemId = $(this).attr('id');
+        var splitId = elemId.split('-');
+        var idNum = splitId[splitId.length - 1];
+        $('#scroller-right-' + idNum).fadeIn('slow');
+        $('#scroller-left-' + idNum).fadeOut('slow');
+      
+        $('#list-'+idNum).animate({left:"+="+ (averageWidthOfItems(idNum)) +"px"},'slow',function(){
+            reAdjust(idNum);
+        });
+        
+    });
 
 })();

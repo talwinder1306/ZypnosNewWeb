@@ -59,7 +59,7 @@ body {
 
 /* Header Buttons */
 .btn {
-  background-color: DodgerBlue;
+  background-color: #2980b9;
   border: none;
   color: white;
   padding: 12px 16px;
@@ -68,7 +68,8 @@ body {
 }
 
 .btn:hover {
-  background-color: RoyalBlue;
+  background-color: #134070;
+  color:#ffffff;
 }
 /* Header Buttons */
 
@@ -685,16 +686,18 @@ body {
 }
 
 #frame .content .messages ul li .msg-image .image-img{
-	width: 250px;
+	  width: 250px;
     height: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 2px;
+    max-height: 300px;
 }
 
 #frame .content .messages ul li .msg-card {
 	width:250px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	border-radius: 2px;
+  display: flow-root;
 }
 #frame .content .messages ul li .msg-card .card-body {
 	margin: 5px;
@@ -707,30 +710,40 @@ body {
 }
 
 #frame .content .messages ul li .msg-card .card-body .card-text {
-    font-size:16px;
+  font-size:16px;
 	padding: 10px 0px;
+  background: none;
+  color: #32465a;
 }
 
 #frame .content .messages ul li .msg-card .card-img-top {
-    display: block;
-    width: 100%;
-    height: auto;
+  display: block;
+  width: 100%;
+  height: auto;
 	border-radius:2px;
+  margin: 0px;
+  padding: 0px;
 	margin-bottom: 10px;
 }
+#frame .content .messages ul li .msg-card .card-body .btn {
+  width: 100%;
+  margin-top: 5px;
+}
 
-#frame .content .messages ul li .msg-carousel {
+#frame .content .messages ul li div.msg-carousel ,
+#frame .content .messages ul li div.msg-quick-reply {
     overflow: auto;
 }
 
-#frame .content .messages ul li .msg-carousel .box {
+#frame .content .messages ul li div.msg-carousel .box, 
+#frame .content .messages ul li div.msg-quick-reply .box {
   position:relative;
-  /*margin:0 auto;*/
   padding:5px;
-  width:70%;
+  width:60%;
 }
 
-#frame .content .messages ul li .msg-carousel .box .scroller {
+#frame .content .messages ul li div.msg-carousel .box .scroller, 
+#frame .content .messages ul li div.msg-quick-reply .box .scroller {
   color:#ffffff;
   width:40px;
   text-align:center;
@@ -740,23 +753,34 @@ body {
   margin-top:5px;
 }
 
-#frame .content .messages ul li .msg-carousel .box .scroller-right{
+#frame .content .messages ul li div.msg-carousel .box .scroller-right, 
+#frame .content .messages ul li div.msg-quick-reply .box .scroller-right{
   float:right;
 }
 
-#frame .content .messages ul li .msg-carousel .box .scroller-left {
+#frame .content .messages ul li div.msg-carousel .box .scroller-left, 
+#frame .content .messages ul li div.msg-quick-reply .box .scroller-left {
   float:left;
 }
 
-#frame .content .messages ul li .msg-carousel .box .wrapper {
+#frame .content .messages ul li div.msg-carousel .box .wrapper, 
+#frame .content .messages ul li div.msg-quick-reply .box .wrapper {
     position:relative;
     margin:0 auto;
     overflow:hidden;
-  padding:5px;
+    padding:5px;
+}
+
+#frame .content .messages ul li div.msg-carousel .box .wrapper {
     height:400px;
 }
 
-#frame .content .messages ul li .msg-carousel .box .wrapper .list {
+#frame .content .messages ul li div.msg-quick-reply .box .wrapper {
+    height:100px;
+}
+
+#frame .content .messages ul li div.msg-carousel .box .wrapper .list ,
+#frame .content .messages ul li div.msg-quick-reply .box .wrapper .list {
     position:absolute;
     left:0px;
     top:0px;
@@ -765,10 +789,9 @@ body {
     margin-top:0px;
 }
 
-
-#frame .content .messages ul li .msg-carousel .box .wrapper .list .item{
-    padding:10px;
-   /*float:left;*/
+#frame .content .messages ul li div.msg-carousel .box .wrapper .list .item,
+#frame .content .messages ul li div.msg-quick-reply .box .wrapper .list .item{
+    padding:5px;
     display:table-cell;
     margin:1px;
     position:relative;
@@ -777,10 +800,19 @@ body {
     vertical-align:middle;
 }
 
-#frame .content .messages ul li .msg-carousel .box .scroller .arrow {
+#frame .content .messages ul li div.msg-quick-reply .box .wrapper .list .item{
+    float:left;
+}
+
+#frame .content .messages ul li div.msg-carousel .box .scroller .arrow, 
+#frame .content .messages ul li div.msg-quick-reply .box .scroller .arrow {
   top: 155px;
   font-size: 2em;
   color: #2c3e50;
+}
+
+#frame .content .messages ul li div.msg-quick-reply .box .scroller .arrow {
+  top: 5px;
 }
 
 @media screen and (min-width: 735px) {
