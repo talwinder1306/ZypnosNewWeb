@@ -19,14 +19,26 @@
         }
     });
 
-    $('#loginForm-SubmitBtn').click(function (e) {
+    var submitLoginForm = function(){
         var email = $('#loginForm-email').val();
         var pass = $('#loginForm-password').val();
 
         if (validateLogin(email, pass) == true) {
             login(email, pass);
         }
+    }
+
+    $('#loginForm-SubmitBtn').click(function (e) {
+        submitLoginForm();
     });
+
+    $('#loginForm').on('keydown', function (e) {
+        if (e.which == 13) {
+            submitLoginForm();
+            return false;
+        }
+    });
+
 
     $('#homepage-logoutBtn').click(function (e) {
         var userId = "";
